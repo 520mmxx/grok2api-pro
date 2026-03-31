@@ -1,19 +1,9 @@
-FROM python:3.11-slim
+FROM python:3.11
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
 WORKDIR /app
-
-# System deps for curl_cffi and other packages
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-       ca-certificates \
-       curl \
-       build-essential \
-       gcc \
-       libffi-dev \
-    && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
