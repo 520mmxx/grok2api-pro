@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  grok2api-pro:
+    image: ghcr.io/520mmxx/grok2api-pro:latest
+    container_name: grok2api-pro
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - TZ=Asia/Shanghai
+    # 如果需要代理，取消下面的注释
+    # environment:
+    #   - PROXY=socks5h://user:pass@proxy:port
+    #   - HTTP_PROXY=http://proxy:port
+    #   - HTTPS_PROXY=http://proxy:port
